@@ -1,0 +1,128 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Preemptive Motion Planning for Human-to-Robot Indirect Placement Handovers">
+    <meta name="author" content="Andrew Choi">
+    <title>pmp-human-to-robot</title>
+<!--    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">-->
+    <link href="fonts.css" rel="stylesheet" type="text/css">
+    <style>
+        p {font:10pt Arial}
+        .heading {font-family: "Open Sans", sans-serif; font-size: 22pt}
+        .subheading {font-family: "Open Sans", sans-serif; font-size: 11pt}
+        .main {width:1150px; background-color:#f8f8ff; margin-top: 0px; margin-left: auto; margin-right:auto;  -webkit-border-radius: 10px;
+            border-radius: 10px;}
+        .regularHeader {font-family: "Open Sans", sans-serif; font-size:18pt; margin-top:20px}
+        td {padding-top: 5px; padding-bottom: 5px;}
+        .text {font-family: "Open Sans", sans-serif; font-size: 11pt; text-align:justify; margin-left:20px; margin-right:20px}
+        a {color:black; text-decoration:none}
+        a:hover  {color:blue;}
+    </style>
+</head>
+<body bgcolor="#f8f8ff">
+<p style="text-align: right; font-family: 'Open Sans', sans-serif; font-size: 18pt">
+    <a href="https://arxiv.org/abs/2203.00156" target="_blank" style="text-align: right">
+        Paper Link
+    </a>
+</p>
+<div class="main">
+    <div style="padding-top:10px; margin: -50px 15pt 25pt;">
+        <div class="heading" style="text-align:center">
+                Preemptive Motion Planning<br/>for Human-to-Robot Indirect Placement Handovers
+        </div>
+        <br />
+        <div class="subheading" style="margin-top:-8pt;text-align:center;font-size:13pt">
+            <a href="https://github.com/QuantuMope" target="_blank">Andrew Choi</a>,
+            <a href="https://www.khalidjawed.com/" target="_blank">Mohammad Khalid Jawed</a>,&nbsp;and
+            <a href="https://www.jsjoo.com/" target="_blank">Jungseock Joo</a>
+            <br />
+            <div style="margin-top:6pt;">University of California, Los Angeles</div>
+            <div class="subheading" style="margin-top:8pt;"><span style="font-style: italic">IEEE International Conference on Robotics and Automation (ICRA), 2022</span></div>
+        </div>
+        <div align="center" style="clear:none; margin-top:15px">
+            <img src="images/prediction-example.png" style="padding:10pt; width:1025px">
+            <div class="text" style="text-align:left; font-size:10pt; margin-top:10pt">
+                <p class="text">
+                    <b>An example prediction sequence:</b> The red vector located on the participant’s head is the detected face norm. The red dot indicates the gaze
+                    and table plane intersection point ψ discussed in Sec. III-B. The green skeleton shows the detected shoulder, elbow, and palm positions. For each frame
+                    (a-h) along the trajectory, the corresponding heatmap can be seen underneath. Note that at the start of the trajectory, the model is unsure of the human’s
+                    placement intent. As more and more of trajectory is realized, a prediction with increasing confidence can be seen being made.
+                </p>
+            </div>
+        </div>
+        <hr style="background-color: black; height:1px">
+        <div class="regularHeader" style="text-align:center;">Abstract</div>
+        <div class="text" align="center">
+            <p class="text">
+                As technology advances, the need for safe, efficient, and collaborative human-robot-teams has become increasingly important. One of the most fundamental collaborative tasks in any setting is the object handover.
+                Human to-robot handovers can take either of two approaches: (1)
+                direct hand-to-hand or (2) indirect hand-to-placement-to-pickup. The latter approach ensures minimal contact between the
+                human and robot but can also result in increased idle time
+                due to having to wait for the object to first be placed down
+                on a surface. To minimize such idle time, the robot must
+                preemptively predict the human intent of where the object will
+                be placed. Furthermore, for the robot to preemptively act in
+                any sort of productive manner, predictions and motion planning
+                must occur in real-time. We introduce a novel prediction planning pipeline that allows the robot to preemptively move
+                towards the human agent’s intended placement location using
+                gaze and gestures as model inputs. In this paper, we investigate
+                the performance and drawbacks of our early intent predictor planner as well as the practical benefits of using such a pipeline
+                through a human-robot case study.
+            </p>
+        </div>
+        <hr style="background-color: black; height:1px">
+        <div class="regularHeader" style="margin-bottom:15px;text-align:center;">Video (Robot Perspective)</div>
+        <div style="text-align:center">
+                <video id="robot_view_example" src="videos/robot_view_example.mp4" controls="controls" style="width: 1000px; padding: 10pt" >
+                </video>
+        </div>
+        <div style="text-align: center">
+            <button onclick="rve_setPlaySpeedHalf()" style="text-align: center; font-family: 'Open Sans', sans-serif; font-size:14pt;
+                                                    background-color: #f8f8ff" type="button">Playback Rate: 0.5</button>
+            <button onclick="rve_setPlaySpeedNorm()" style="text-align: center; font-family: 'Open Sans', sans-serif; font-size:14pt;
+                                                    background-color: #f8f8ff" type="button">Playback Rate: 1.0</button>
+            <button onclick="rve_setPlaySpeedDouble()" style="text-align: center; font-family: 'Open Sans', sans-serif; font-size:14pt;
+                                                    background-color: #f8f8ff" type="button">Playback Rate: 2.0</button>
+        </div>
+
+        <hr style="background-color: black; height:1px">
+        <div class="regularHeader" style="margin-bottom:15px;text-align:center;">Video (Third-person Perspective)</div>
+        <div style="text-align:center">
+                <video id="third_person_example" src="videos/third_person_example.mp4" controls="controls" style="width: 1000px; padding: 10pt" >
+                </video>
+        </div>
+        <div style="text-align: center">
+            <button onclick="tpe_setPlaySpeedHalf()" style="text-align: center; font-family: 'Open Sans', sans-serif; font-size:14pt;
+                                                    background-color: #f8f8ff" type="button">Playback Rate: 0.5</button>
+            <button onclick="tpe_setPlaySpeedNorm()" style="text-align: center; font-family: 'Open Sans', sans-serif; font-size:14pt;
+                                                    background-color: #f8f8ff" type="button">Playback Rate: 1.0</button>
+            <button onclick="tpe_setPlaySpeedDouble()" style="text-align: center; font-family: 'Open Sans', sans-serif; font-size:14pt;
+                                                    background-color: #f8f8ff" type="button">Playback Rate: 2.0</button>
+        </div>
+        <script>
+            var rve_vid = document.getElementById("robot_view_example");
+            var tpe_vid = document.getElementById("third_person_example");
+
+            function rve_setPlaySpeedHalf() {
+                rve_vid.playbackRate = 0.5;
+            }
+            function rve_setPlaySpeedNorm() {
+                rve_vid.playbackRate = 1.0;
+            }
+            function rve_setPlaySpeedDouble() {
+                rve_vid.playbackRate = 2.0;
+            }
+            function tpe_setPlaySpeedHalf() {
+                tpe_vid.playbackRate = 0.5;
+            }
+            function tpe_setPlaySpeedNorm() {
+                tpe_vid.playbackRate = 1.0;
+            }
+            function tpe_setPlaySpeedDouble() {
+                tpe_vid.playbackRate = 2.0;
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>
